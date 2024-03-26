@@ -2,6 +2,7 @@ package main
 
 import (
 	"blogserver/global"
+	"blogserver/pkg/logger"
 	"blogserver/pkg/model"
 	"blogserver/pkg/routers"
 	"blogserver/pkg/setting"
@@ -10,10 +11,11 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 func init() {
-	err := updateSetting()
+	err := setupSetting()
 	if err != nil {
 		log.Fatalf("init.updateSetting is err:%v", err)
 	}
@@ -21,6 +23,11 @@ func init() {
 	err = setupDBEngine()
 	if err != nil {
 		log.Fatalf("init.setupDBEngine err: %v", err)
+	}
+
+	err = setupLogger()
+	if err != nil {
+		log.Fatalf("init.setupLogger err: %v", err)
 	}
 }
 
@@ -37,7 +44,7 @@ func main() {
 	s.ListenAndServe()
 }
 
-func updateSetting() error {
+func setupSetting() error {
 	s, err := setting.NewSetting()
 	if err != nil {
 		return err
@@ -67,5 +74,17 @@ func setupDBEngine() error {
 	if err != nil {
 		return err
 	}
+	return nil
+}
+
+func setupLogger() error {
+	fileName := global.AppSetting.LogSavePath + "/" + global.AppSetting.LogFileName + global.AppSetting.LogFileExt
+	global.Logger = logger.NewLogger(&lumberjack.Logger{
+		Filename:  fileName,
+		MaxSize:   600,
+		MaxAge:    10,
+		LocalTime: true,
+	}, "", log.LstdFlags).WithCaller(2)
+
 	return nil
 }
