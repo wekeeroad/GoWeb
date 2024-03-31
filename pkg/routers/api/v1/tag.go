@@ -12,7 +12,6 @@ func (t Tag) Get(c *gin.Context) {}
 
 //	@Summary	Get multiple tags
 //  @Tags       tag
-//	@Accept		json
 //	@Produce	json
 //	@Param		name		query		string			false	"Name of tag "	maxlength(100)
 //	@Param		state		query		int				false	"states"		Enums(0,1)	default(1)
@@ -26,7 +25,6 @@ func (t Tag) List(c *gin.Context) {}
 
 //	@Summary	Create tag
 //  @Tags       tag
-//	@Accept		json
 //	@Produce	json
 //	@Param		name		body		string			true	"name of tag"	minlength(3)	maxlengh(100)
 //	@Param		state		body		int				false	"states"		Enums(0,1)		default(1)
@@ -39,7 +37,6 @@ func (t Tag) Create(c *gin.Context) {}
 
 //	@Summary	Update tag
 //  @Tags       tag
-//	@Accept		json
 //	@Produce	json
 //	@Param		id			path		int				true	"id of tag"
 //	@Param		name		body		string			false	"name of tag"	minlength(3)	maxlength(100)
@@ -54,7 +51,6 @@ func (t Tag) Update(c *gin.Context) {}
 //	@Summary		Delete tag
 //	@Description	delete tag
 //	@Tags			tag
-//	@accept			json
 //	@Produce		json
 //	@Param			id	path		int				true	"id of tag"
 //	@Success		200	{string}	string			"success"

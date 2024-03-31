@@ -7,9 +7,6 @@
     "paths": {
         "/api/v1/tags": {
             "get": {
-                "consumes": [
-                    "application/json"
-                ],
                 "produces": [
                     "application/json"
                 ],
@@ -71,9 +68,6 @@
                 }
             },
             "post": {
-                "consumes": [
-                    "application/json"
-                ],
                 "produces": [
                     "application/json"
                 ],
@@ -141,9 +135,6 @@
         },
         "/api/v1/tags/{id}": {
             "put": {
-                "consumes": [
-                    "application/json"
-                ],
                 "produces": [
                     "application/json"
                 ],
@@ -220,9 +211,6 @@
             },
             "delete": {
                 "description": "delete tag",
-                "consumes": [
-                    "application/json"
-                ],
                 "produces": [
                     "application/json"
                 ],

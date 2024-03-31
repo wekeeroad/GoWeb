@@ -37,8 +37,6 @@ info:
 paths:
   /api/v1/tags:
     get:
-      consumes:
-      - application/json
       parameters:
       - description: 'Name of tag '
         in: query
@@ -80,8 +78,6 @@ paths:
       tags:
       - tag
     post:
-      consumes:
-      - application/json
       parameters:
       - description: name of tag
         in: body
@@ -127,8 +123,6 @@ paths:
       - tag
   /api/v1/tags/{id}:
     delete:
-      consumes:
-      - application/json
       description: delete tag
       parameters:
       - description: id of tag
@@ -155,8 +149,6 @@ paths:
       tags:
       - tag
     put:
-      consumes:
-      - application/json
       parameters:
       - description: id of tag
         in: path
