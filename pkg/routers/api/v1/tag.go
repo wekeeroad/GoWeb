@@ -10,7 +10,6 @@ func NewTag() Tag {
 
 func (t Tag) Get(c *gin.Context) {}
 
-/*
 //	@Summary	Get multiple tags
 //  @Tags       tag
 //	@Accept		json
@@ -23,10 +22,8 @@ func (t Tag) Get(c *gin.Context) {}
 //	@Failure	400			{object}	errcode.Error	"requirment error"
 //	@Failure	500			{object}	errcode.Error	"internal error"
 //	@Router		/api/v1/tags [get]
-*/
 func (t Tag) List(c *gin.Context) {}
 
-/*
 //	@Summary	Create tag
 //  @Tags       tag
 //	@Accept		json
@@ -38,10 +35,8 @@ func (t Tag) List(c *gin.Context) {}
 //	@Failure	400			{object}	errcode.Error	"requirment error"
 //	@Failure	500			{object}	errcode.Error	"internal error"
 //	@Router		/api/v1/tags [post]
-*/
 func (t Tag) Create(c *gin.Context) {}
 
-/*
 //	@Summary	Update tag
 //  @Tags       tag
 //	@Accept		json
@@ -54,7 +49,6 @@ func (t Tag) Create(c *gin.Context) {}
 //	@Failure	400			{object}	errcode.Error	"requirment error"
 //	@Failure	500			{object}	errcode.Error	"internal error"
 //	@Router		/api/v1/tags/{id} [put]
-*/
 func (t Tag) Update(c *gin.Context) {}
 
 //	@Summary		Delete tag

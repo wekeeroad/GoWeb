@@ -10,10 +10,121 @@ definitions:
       msg:
         type: string
     type: object
+  model.Tag:
+    properties:
+      created_by:
+        type: string
+      created_on:
+        type: integer
+      deleted_on:
+        type: integer
+      id:
+        type: integer
+      is_del:
+        type: integer
+      modified_by:
+        type: string
+      modified_on:
+        type: integer
+      name:
+        type: string
+      state:
+        type: integer
+    type: object
 info:
   contact: {}
   license: {}
 paths:
+  /api/v1/tags:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 'Name of tag '
+        in: query
+        maxLength: 100
+        name: name
+        type: string
+      - default: 1
+        description: states
+        enum:
+        - 0
+        - 1
+        in: query
+        name: state
+        type: integer
+      - description: page
+        in: query
+        name: page
+        type: integer
+      - description: number per page
+        in: query
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/model.Tag'
+        "400":
+          description: requirment error
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: internal error
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: Get multiple tags
+      tags:
+      - tag
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: name of tag
+        in: body
+        minLength: 3
+        name: name
+        required: true
+        schema:
+          type: string
+      - default: 1
+        description: states
+        enum:
+        - 0
+        - 1
+        in: body
+        name: state
+        schema:
+          type: integer
+      - description: creator
+        in: body
+        maxLength: 100
+        minLength: 3
+        name: created_by
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            $ref: '#/definitions/model.Tag'
+        "400":
+          description: requirment error
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: internal error
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: Create tag
+      tags:
+      - tag
   /api/v1/tags/{id}:
     delete:
       consumes:
@@ -41,6 +152,59 @@ paths:
           schema:
             $ref: '#/definitions/errcode.Error'
       summary: Delete tag
+      tags:
+      - tag
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: id of tag
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: name of tag
+        in: body
+        maxLength: 100
+        minLength: 3
+        name: name
+        schema:
+          type: string
+      - default: 1
+        description: states
+        enum:
+        - 0
+        - 1
+        in: body
+        name: state
+        schema:
+          type: integer
+      - description: editor
+        in: body
+        maxLength: 100
+        minLength: 3
+        name: modified_by
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            items:
+              $ref: '#/definitions/model.Tag'
+            type: array
+        "400":
+          description: requirment error
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: internal error
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: Update tag
       tags:
       - tag
 swagger: "2.0"

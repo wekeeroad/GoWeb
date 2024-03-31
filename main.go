@@ -32,11 +32,11 @@ func init() {
 	}
 }
 
-//	@title			blog system
-//	@version		1.0
-//	@description	Golang: Produce by Golang together
-//	@termsOfService	https://github.com/wekeeroad/GoWeb
-//	@basePath		/api/v1
+// @Title			blog system
+// @Version		1.0
+// @Description	Golang: Produce by Golang together
+// @TermsOfService	https://github.com/wekeeroad/GoWeb
+// @BasePath		/api/v1
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routers.NewRouter()
