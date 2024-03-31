@@ -4,8 +4,8 @@ import (
 	v1 "blogserver/pkg/routers/api/v1"
 
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
 	_ "github.com/wekeeroad/GoWeb/docs"
 )
 
