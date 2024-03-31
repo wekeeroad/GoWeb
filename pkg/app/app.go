@@ -1,7 +1,7 @@
 package app
 
 import (
-	"blogserver/pkg/errcode"
+	"github.com/wekeeroad/GoWeb/pkg/errcode"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

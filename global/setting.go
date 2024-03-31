@@ -1,8 +1,8 @@
 package global
 
 import (
-	"blogserver/pkg/logger"
-	"blogserver/pkg/setting"
+	"github.com/wekeeroad/GoWeb/pkg/logger"
+	"github.com/wekeeroad/GoWeb/pkg/setting"
 )
 
 var (

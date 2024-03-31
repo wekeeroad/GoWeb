@@ -1,8 +1,8 @@
 package app
 
 import (
-	"blogserver/global"
-	"blogserver/pkg/convert"
+	"github.com/wekeeroad/GoWeb/global"
+	"github.com/wekeeroad/GoWeb/pkg/convert"
 
 	"github.com/gin-gonic/gin"
 )

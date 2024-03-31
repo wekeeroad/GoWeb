@@ -1,7 +1,7 @@
 package routers
 
 import (
-	v1 "blogserver/pkg/routers/api/v1"
+	v1 "github.com/wekeeroad/GoWeb/pkg/routers/api/v1"
 
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"

@@ -1,8 +1,8 @@
 package v1
 
 import (
-	"blogserver/pkg/app"
-	"blogserver/pkg/errcode"
+	"github.com/wekeeroad/GoWeb/pkg/app"
+	"github.com/wekeeroad/GoWeb/pkg/errcode"
 
 	"github.com/gin-gonic/gin"
 )

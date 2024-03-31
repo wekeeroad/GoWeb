@@ -1,14 +1,15 @@
 package main
 
 import (
-	"blogserver/global"
-	"blogserver/pkg/logger"
-	"blogserver/pkg/model"
-	"blogserver/pkg/routers"
-	"blogserver/pkg/setting"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/wekeeroad/GoWeb/global"
+	"github.com/wekeeroad/GoWeb/pkg/logger"
+	"github.com/wekeeroad/GoWeb/pkg/model"
+	"github.com/wekeeroad/GoWeb/pkg/routers"
+	"github.com/wekeeroad/GoWeb/pkg/setting"
 
 	"github.com/gin-gonic/gin"
 	"gopkg.in/natefinch/lumberjack.v2"

@@ -1,4 +1,4 @@
-module blogserver
+module github.com/wekeeroad/GoWeb
 
 go 1.21.5
 

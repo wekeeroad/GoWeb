@@ -1,9 +1,9 @@
 package model
 
 import (
-	"blogserver/global"
-	"blogserver/pkg/setting"
 	"fmt"
+	"github.com/wekeeroad/GoWeb/global"
+	"github.com/wekeeroad/GoWeb/pkg/setting"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
