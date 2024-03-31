@@ -1,0 +1,8 @@
+info:
+  contact: {}
+  description: 'Golang: Produce by Golang together'
+  termsOfService: https://github.com/wekeeroad/GoWeb
+  title: blog system
+  version: "1.0"
+paths: {}
+swagger: "2.0"

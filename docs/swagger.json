@@ -1,0 +1,11 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Golang: Produce by Golang together",
+        "title": "blog system",
+        "termsOfService": "https://github.com/wekeeroad/GoWeb",
+        "contact": {},
+        "version": "1.0"
+    },
+    "paths": {}
+}

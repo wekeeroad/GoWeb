@@ -31,6 +31,10 @@ func init() {
 	}
 }
 
+// @title blog system
+// @version 1.0
+// @description Golang: Produce by Golang together
+// @termsOfService https://github.com/wekeeroad/GoWeb
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routers.NewRouter()
