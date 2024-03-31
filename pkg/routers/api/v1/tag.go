@@ -10,6 +10,7 @@ func NewTag() Tag {
 
 func (t Tag) Get(c *gin.Context) {}
 
+/*
 //	@Summary	Get multiple tags
 //  @Tags       tag
 //	@Accept		json
@@ -22,8 +23,10 @@ func (t Tag) Get(c *gin.Context) {}
 //	@Failure	400			{object}	errcode.Error	"requirment error"
 //	@Failure	500			{object}	errcode.Error	"internal error"
 //	@Router		/api/v1/tags [get]
+*/
 func (t Tag) List(c *gin.Context) {}
 
+/*
 //	@Summary	Create tag
 //  @Tags       tag
 //	@Accept		json
@@ -35,8 +38,10 @@ func (t Tag) List(c *gin.Context) {}
 //	@Failure	400			{object}	errcode.Error	"requirment error"
 //	@Failure	500			{object}	errcode.Error	"internal error"
 //	@Router		/api/v1/tags [post]
+*/
 func (t Tag) Create(c *gin.Context) {}
 
+/*
 //	@Summary	Update tag
 //  @Tags       tag
 //	@Accept		json
@@ -49,15 +54,17 @@ func (t Tag) Create(c *gin.Context) {}
 //	@Failure	400			{object}	errcode.Error	"requirment error"
 //	@Failure	500			{object}	errcode.Error	"internal error"
 //	@Router		/api/v1/tags/{id} [put]
+*/
 func (t Tag) Update(c *gin.Context) {}
 
-//	@Summary	Delete tag
-//  @Tags       tag
-//	@Accept		json
-//	@Produce	json
-//	@Param		id	path		int				true	"id of tag"
-//	@Success	200	{string}	string			"success"
-//	@Failure	400	{object}	errcode.Error	"requirment error"
-//	@Failure	500	{object}	errcode.Error	"internal error"
-//	@Router		/api/v1/tags/{id} [delete]
+//	@Summary		Delete tag
+//	@Description	delete tag
+//	@Tags			tag
+//	@accept			json
+//	@Produce		json
+//	@Param			id	path		int				true	"id of tag"
+//	@Success		200	{string}	string			"success"
+//	@Failure		400	{object}	errcode.Error	"requirment error"
+//	@Failure		500	{object}	errcode.Error	"internal error"
+//	@Router			/api/v1/tags/{id} [delete]
 func (t Tag) Delete(c *gin.Context) {}

@@ -1,12 +1,72 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "Golang: Produce by Golang together",
-        "title": "blog system",
-        "termsOfService": "https://github.com/wekeeroad/GoWeb",
         "contact": {},
-        "version": "1.0"
+        "license": {}
     },
-    "basePath": "/api/v1",
-    "paths": {}
+    "paths": {
+        "/api/v1/tags/{id}": {
+            "delete": {
+                "description": "delete tag",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "tag"
+                ],
+                "summary": "Delete tag",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id of tag",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "requirment error",
+                        "schema": {
+                            "$ref": "#/definitions/errcode.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "internal error",
+                        "schema": {
+                            "$ref": "#/definitions/errcode.Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "errcode.Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "details": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        }
+    }
 }

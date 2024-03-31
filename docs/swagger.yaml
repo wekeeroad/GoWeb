@@ -1,9 +1,46 @@
-basePath: /api/v1
+definitions:
+  errcode.Error:
+    properties:
+      code:
+        type: integer
+      details:
+        items:
+          type: string
+        type: array
+      msg:
+        type: string
+    type: object
 info:
   contact: {}
-  description: 'Golang: Produce by Golang together'
-  termsOfService: https://github.com/wekeeroad/GoWeb
-  title: blog system
-  version: "1.0"
-paths: {}
+  license: {}
+paths:
+  /api/v1/tags/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete tag
+      parameters:
+      - description: id of tag
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: success
+          schema:
+            type: string
+        "400":
+          description: requirment error
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: internal error
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: Delete tag
+      tags:
+      - tag
 swagger: "2.0"
