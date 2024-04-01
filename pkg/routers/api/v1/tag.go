@@ -17,7 +17,7 @@ func (t Tag) Get(c *gin.Context) {}
 //	@Param		state		query		int				false	"states"		Enums(0,1)	default(1)
 //	@Param		page		query		int				false	"page"
 //	@Param		page_size	query		int				false	"number per page"
-//	@Success	200			{object}	model.Tag		"success"
+//	@Success	200			{object}	model.TagSwagger		"success"
 //	@Failure	400			{object}	errcode.Error	"requirment error"
 //	@Failure	500			{object}	errcode.Error	"internal error"
 //	@Router		/api/v1/tags [get]
