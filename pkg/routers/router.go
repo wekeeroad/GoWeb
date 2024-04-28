@@ -2,8 +2,10 @@ package routers
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/wekeeroad/GoWeb/global"
+	"github.com/wekeeroad/GoWeb/pkg/limiter"
 	"github.com/wekeeroad/GoWeb/pkg/middleware"
 	"github.com/wekeeroad/GoWeb/pkg/routers/api"
 	v1 "github.com/wekeeroad/GoWeb/pkg/routers/api/v1"
@@ -15,10 +17,26 @@ import (
 	_ "github.com/wekeeroad/GoWeb/docs"
 )
 
+var methodLimiters = limiter.NewMethodLimiter().AddBuckets(
+	limiter.LimiterBucketRule{
+		Key:         "/auth",
+		Fillnterval: time.Second,
+		Capacity:    10,
+		Quantum:     10,
+	},
+)
+
 func NewRouter() *gin.Engine {
 	r := gin.New()
-	r.Use(gin.Logger())
-	r.Use(gin.Recovery())
+	if global.ServerSetting.RunMode == "debug" {
+		r.Use(gin.Logger())
+		r.Use(gin.Recovery())
+	} else {
+		r.Use(middleware.AccessLog())
+		r.Use(middleware.Recovery())
+	}
+	r.Use(middleware.RateLimiter(methodLimiters))
+	r.Use(middleware.ContextTimeout(global.AppSetting.DefaultContextTimeout))
 	r.Use(middleware.Translations())
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	article := v1.NewArticle()

@@ -1,5 +1,5 @@
 Server:
-  RunMode: debug
+  RunMode: release
   HttpPort: 8000
   ReadTimeout: 60
   WriteTimeout: 60
@@ -16,6 +16,7 @@ App:
     - .jpg
     - .jpeg
     - .png
+  DefaultContextTimeout: 60
 Database:
   DBType: mysql
   Username: root
@@ -31,3 +32,12 @@ JWT:
   Secret: eddycjy
   Issuer: blog-service
   Expire: 7200
+Email:
+  Host: smtp.qq.com
+  Port: 465
+  UserName: 627458392@qq.com
+  Password: vmbbxjkohyxibajc
+  IsSSL: True
+  From: 627458392@qq.com
+  To:
+    - 627458392@qq.com
