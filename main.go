@@ -1,8 +1,10 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/wekeeroad/GoWeb/global"
@@ -16,10 +18,21 @@ import (
 	"gopkg.in/natefinch/lumberjack.v2"
 )
 
+var (
+	port    string
+	runMode string
+	config  string
+)
+
 func init() {
-	err := setupSetting()
+	err := setupFlag()
 	if err != nil {
-		log.Fatalf("init.updateSetting is err:%v", err)
+		log.Fatalf("init.setupFlag is err:%v", err)
+	}
+
+	err = setupSetting()
+	if err != nil {
+		log.Fatalf("init.setupSetting is err:%v", err)
 	}
 
 	err = setupDBEngine()
@@ -56,8 +69,17 @@ func main() {
 	s.ListenAndServe()
 }
 
+func setupFlag() error {
+	flag.StringVar(&port, "port", "", "start port")
+	flag.StringVar(&runMode, "mode", "", "start mode")
+	flag.StringVar(&config, "config", "configs/", "define the path of config file")
+	flag.Parse()
+
+	return nil
+}
+
 func setupSetting() error {
-	s, err := setting.NewSetting()
+	s, err := setting.NewSetting(strings.Split(config, ", ")...)
 	if err != nil {
 		return err
 	}
@@ -81,6 +103,14 @@ func setupSetting() error {
 	err = s.ReadSection("Email", &global.EmailSetting)
 	if err != nil {
 		return err
+	}
+
+	if port != "" {
+		global.ServerSetting.HttpPort = port
+	}
+
+	if runMode != "" {
+		global.ServerSetting.RunMode = runMode
 	}
 
 	global.ServerSetting.ReadTimeout *= time.Second
