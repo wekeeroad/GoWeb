@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"log"
 	"net/http"
 	"strings"
@@ -22,6 +23,11 @@ var (
 	port    string
 	runMode string
 	config  string
+
+	isVersion    bool
+	buildTime    string
+	buildVersion string
+	gitCommitID  string
 )
 
 func init() {
@@ -57,6 +63,14 @@ func init() {
 // @termsOfService	https://github.com/wekeeroad/GoWeb
 // @basePath	/api/v1
 func main() {
+	if isVersion {
+		fmt.Println("========The version detail========")
+		fmt.Printf("The time of build is: %v\n", buildTime)
+		fmt.Printf("The version of build is: %v\n", buildVersion)
+		fmt.Printf("The git commit ID is: %v\n", gitCommitID)
+		return
+	}
+
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routers.NewRouter()
 	s := &http.Server{
@@ -73,6 +87,7 @@ func setupFlag() error {
 	flag.StringVar(&port, "port", "", "start port")
 	flag.StringVar(&runMode, "mode", "", "start mode")
 	flag.StringVar(&config, "config", "configs/", "define the path of config file")
+	flag.BoolVar(&isVersion, "version", false, "if show the detail of version")
 	flag.Parse()
 
 	return nil
